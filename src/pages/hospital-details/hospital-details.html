@@ -1,0 +1,108 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Book Hospital Ride</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <ion-segment [(ngModel)]="currentStep">
+      <ion-segment-button value="Hospital">
+        Hospital
+      </ion-segment-button>
+      <ion-segment-button value="Address">
+        Address
+      </ion-segment-button>
+      <ion-segment-button value="Time">
+        Time
+      </ion-segment-button>
+      <ion-segment-button value="Review">
+        Review
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+  <div [hidden]="currentStep !== 'Hospital'">
+    <ion-card *ngIf="hospital.id">
+      <img src="{{hospital.pic}}" />
+      <ion-card-content>
+        <h2 class="card-title">{{hospital.title}}</h2>
+        <p>{{hospital.address}}, {{hospital.city}} {{hospital.state}}</p>
+      </ion-card-content>
+      <ion-list>
+
+        <ion-item>
+          <ion-icon item-left name="moon"></ion-icon>
+          <h3>Bedrooms</h3>
+          <ion-note item-right>{{hospital.bedrooms}}</ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-icon item-left name="leaf"></ion-icon>
+          <h3>Bathrooms</h3>
+          <ion-note item-right>{{hospital.bathrooms}}</ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-icon item-left name="pricetag"></ion-icon>
+          <h3>Asking Price</h3>
+          <ion-note item-right>{{hospital.price}}</ion-note>
+        </ion-item>
+
+      </ion-list>
+    </ion-card>
+  </div>
+  <section [hidden]="currentStep !== 'Address'">
+    <ion-buttons float-end class="current-location">
+      <button ion-button icon-only (click)="currentLocation()">
+        <img src="./assets/icon/current-location.png" alt="">
+      </button>
+    </ion-buttons>
+
+    <ion-searchbar autocorrect="off" autocapitalize="off" spellcheck="off" #searchbar placeholder="Search..." class="search-box"></ion-searchbar>
+
+    <div #map id="map" class="map"></div>
+    <div class="centerMarker"></div>
+    <div class="address-view">
+      <ion-list>
+
+        <ion-item no-lines class="address-item">
+          <ion-label stacked class="title-label">ADDRESS</ion-label>
+          <ion-textarea class="address" [(ngModel)]="address"></ion-textarea>
+        </ion-item>
+        <ion-item>
+        </ion-item>
+      </ion-list>
+
+    </div>
+  </section>
+  <div [hidden]="currentStep !== 'Time'">
+    <ion-item>
+      <ion-label>Date</ion-label>
+      <ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="date"></ion-datetime>
+    </ion-item>
+  </div>
+  <div [hidden]="currentStep !== 'Review'">
+      <ion-item>
+          <ion-icon item-left name="leaf"></ion-icon>
+          <h3>From</h3>
+          <ion-note item-right>{{hospital.address}}</ion-note>
+        </ion-item>
+        <ion-item>
+            <ion-icon item-left name="leaf"></ion-icon>
+            <h3>From</h3>
+            <ion-note item-right>{{address}}</ion-note>
+          </ion-item>
+        <ion-item>
+            <ion-icon item-left name="leaf"></ion-icon>
+            <h3>Date</h3>
+            <ion-note item-right>{{date}}</ion-note>
+          </ion-item>
+
+  </div>
+  <ion-footer>
+    <button ion-button color="primary" block (click)=proceedToNextStep() *ngIf="currentStep !== 'Review'">
+      Proceed
+    </button>
+    <button ion-button color="primary" block (click)=completeBooking() *ngIf="currentStep === 'Review'">
+      Make Booking
+    </button>
+  </ion-footer>
+</ion-content>
