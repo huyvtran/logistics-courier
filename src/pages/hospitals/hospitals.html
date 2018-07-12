@@ -23,11 +23,9 @@
                 <img src="{{hospital.thumb}}"/>
             </ion-thumbnail>
             <h2>{{hospital.title}}</h2>
-            <p>{{hospital.city}}, {{hospital.state}} ∙ {{ hospital.price }}</p>
+            <p>{{hospital.city}}, {{hospital.state}}</p>
         </button>
-        <ion-item-options>
-            <button danger (click)="deleteItem(hospital)">Delete</button>
-        </ion-item-options>
+ 
     </ion-item-sliding>
 
 </ion-list>

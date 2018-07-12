@@ -96,7 +96,7 @@ var HomePage = /** @class */ (function () {
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/home/kolawole/Documents/freelance/sandile/event-tutorial-1/src/pages/home/home.html"*/'\n\n<ion-content padding>\n\n\n  <button ion-button block color="primary" (click)="goToHospitals()">\n    Need A Ride To The Hospital?\n  </button>\n  <button ion-button block color="primary" (click)="goToProfile()">\n      View Your Profile\n   </button>\n</ion-content>\n'/*ion-inline-end:"/home/kolawole/Documents/freelance/sandile/event-tutorial-1/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"/home/kolawole/Documents/freelance/sandile/event-tutorial-1/src/pages/home/home.html"*/'<ion-content padding>\n  <button ion-button block color="primary" (click)="goToHospitals()">\n    Need A Ride To The Hospital?\n  </button>\n  <button ion-button block color="primary" (click)="goToProfile()">\n    View Your Profile\n  </button>\n</ion-content>'/*ion-inline-end:"/home/kolawole/Documents/freelance/sandile/event-tutorial-1/src/pages/home/home.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]])
     ], HomePage);
